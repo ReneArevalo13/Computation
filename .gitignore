@@ -1,0 +1,94 @@
+## GENERATED WITH GOOGLE AI
+
+# ==========================================
+# C / C++ 
+# ==========================================
+# Compiled object files, libraries, and binaries
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build directories (CMake, Make, etc.)
+[Bb]uild/
+[Cc]make-build-*/
+
+# ==========================================
+# Python
+# ==========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments & Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# ==========================================
+# Julia
+# ==========================================
+# Compiled code cache
+*.jl.ji
+
+# External packages/manifests managed by the project (uncomment if you want to ignore them)
+# Manifest.toml
+
+# ==========================================
+# IDEs and Editors
+# ==========================================
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# CLion / PyCharm (JetBrains)
+.idea/
+
+# Xcode
+.DS_Store
+
+# ==========================================
+# OS Generated Files
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ==========================================
+# Neovim / Vim
+# ==========================================
+# Swap files (created when a file is open in nvim)
+.*.sw[a-p]
+.*.s[a-v][a-z]
+!_*.sw[a-p]
+
+# Session files
+Session.vim
+.netrwhist
+
+# Undo history (if you use undofile)
+*.un~
+
+# Backup files
+*~
+*.bak
+
+# Neovim local configuration (if you use per-project local shada/rc files)
+.nvimrc
+.exrc
+
