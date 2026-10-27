@@ -1,0 +1,26 @@
+Computation/
+├── .gitignore                   # Ignores build artifacts
+├── CMakeLists.txt               # 1. Root Orchestrator
+├── src/                         # The main entry point application
+│   └── main.cpp                 # Pulls in your libraries and executes them
+└── num_methods/
+    ├── CMakeLists.txt           # 2. Subdirectory Router
+    ├── calculus/
+    │   ├── CMakeLists.txt       # 3. Calculus Library Build
+    │   ├── include/
+    │   │   └── calculus.hpp     # Calculus function declarations
+    │   └── src/
+    │       └── calculus.cpp     # Calculus implementation code
+    ├── linear-algebra/
+    │   ├── CMakeLists.txt       # 3. Lin-Alg Library Build
+    │   ├── include/
+    │   │   └── lin_alg.hpp
+    │   └── src/
+    │       └── lin_alg.cpp
+    └── root-finding/
+        ├── CMakeLists.txt       # 3. Root-Finding Library Build
+        ├── include/
+        │   └── root_finding.hpp
+        └── src/
+            └── root_finding.cpp
+

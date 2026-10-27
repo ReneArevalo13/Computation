@@ -1,0 +1,3 @@
+add_subdirectory(calculus)
+add_subdirectory(linear_algebra)
+add_subdirectory(root_finding)

@@ -1,0 +1,50 @@
+PseudoCode For Gaussian Elimination:
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+FORWARD SUBSTIUTION
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+For each column i from 0 to n - 1:
+    
+    1. PARTIAL PIVOTING
+       Find the row 'pivot_row' (from row i down to n-1) that has the largest absolute value in column i.
+       
+       If abs(A[pivot_row][i]) < 1e-12:
+           Throw an error ("Matrix is singular or near-singular")
+           
+       If pivot_row != i:
+           Swap row i and row pivot_row (in both matrix A and vector b)
+
+    2. ROW ELIMINATION
+       For each row j from i + 1 to n - 1:
+           Calculate the factor: factor = A[j][i] / A[i][i]
+           
+           Subtract factor * row i from row j:
+           For each column k from i to n - 1:
+               A[j][k] = A[j][k] - (factor * A[i][k])
+               
+           Update the b vector for row j:
+           b[j] = b[j] - (factor * b[i])
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+BACKWARD SUBSTITUTION
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+For each column i from 0 to n - 1:
+    
+    1. PARTIAL PIVOTING
+       Find the row 'pivot_row' (from row i down to n-1) that has the largest absolute value in column i.
+       
+       If abs(A[pivot_row][i]) < 1e-12:
+           Throw an error ("Matrix is singular or near-singular")
+           
+       If pivot_row != i:
+           Swap row i and row pivot_row (in both matrix A and vector b)
+
+    2. ROW ELIMINATION
+       For each row j from i + 1 to n - 1:
+           Calculate the factor: factor = A[j][i] / A[i][i]
+           
+           Subtract factor * row i from row j:
+           For each column k from i to n - 1:
+               A[j][k] = A[j][k] - (factor * A[i][k])
+               
+           Update the b vector for row j:
+           b[j] = b[j] - (factor * b[i])
+
