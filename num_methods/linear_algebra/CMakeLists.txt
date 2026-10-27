@@ -1,7 +1,9 @@
-# Create the static library target out of your source files
-add_library(num_methods_linalg STATIC src/linalg.cpp)
+set(LINALG_SOURCES
+    src/gaussian_elimination.cpp
+)
 
-# Tell anyone linking to this library where its header files live
+add_library(num_methods_linalg STATIC {LINALG_SOURCES})
+
 target_include_directories(num_methods_linalg
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
