@@ -1,5 +1,6 @@
 set(LINALG_SOURCES
     src/gaussian_elimination.cpp
+    src/matrix_io.cpp
 )
 
 add_library(num_methods_linalg STATIC ${LINALG_SOURCES})
