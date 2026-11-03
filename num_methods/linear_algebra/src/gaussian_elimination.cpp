@@ -20,4 +20,19 @@ namespace num_methods::linalg {
 
         }
     }
-}
+    // Note that in the client facing function call here we are passing by value.
+    // This way we create a copy that can be worked on locally by the above helper methods.
+    Vector gaussian_elimination(Matrix A, Vector b) {
+        int n = A.size();
+        if (n==0 || b.size() != static_cast<size_t>(n)) {
+            throw std::invalid_argument("Matrix dimensions do not match vector dimensions");
+        }
+        // Solving Routine: forward_elimination -> backward_substitution
+        // returning the solution f
+        // Instead of copying the numbers, the compiler performs a pointer handoff:
+        // it simply transfers ownership of the memory address containing your solution 
+        // vector directly to the variable in main.cpp. It runs in O(1) constant time.
+        forward_elimination(A,b);
+        return backward_substitution(A,b);
+    }
+
