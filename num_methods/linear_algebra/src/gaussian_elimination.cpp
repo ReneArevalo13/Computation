@@ -10,11 +10,41 @@
 #include <stdexcept>
 #include <cmath>
 #include <algorithm>
+#include <utility>
 
 namespace num_methods::linalg {
     namespace {
         void forward_elimination(Matrix& A, Vector& b) {
+            int n = A.size();
+            for (int i = 0; i < n; i++) {
+                // Implement partial pivoting
+                int pivot_row = i;
+                for (int j = i + 1; j < n; j++) {
+                    if (std::abs(A[j][i]) > std::abs(A[pivot_row][i])) {
+                        pivot_row = j;
+                    }
+                }
+                // Swap rows if a better pivot was found
+                if (pivot_row != i) {
+                    std::swap(A[i], A[pivot_row]);
+                    std::swap(b[i], b[pivot_row]);
+                }
 
+                // Numerical safety check: detect singular Matrices
+                if (std::abs(A[i][i]) < 1e-9) {
+                    throw std::runtime_error("Matrix Singular or near singular");
+                }
+
+                // Elimination steps
+                // Save on flops and do not scale pivot to 1 (Doolitle)
+                for (int j = i + 1; j < n; j++) {
+                    double scaling_factor = A[j][i]/A[i][i];
+                    for (int k = i; k < n; k++) {
+                        A[j][k] -= scaling_factor * A[i][k];
+                    }
+                    b[j] -= scaling_factor * b[i];
+                }
+            }
         }
         Vector backward_substitution(const Matrix& A, const Vector& b) {
 
