@@ -15,6 +15,7 @@
 namespace num_methods::linalg {
     namespace {
         void forward_elimination(Matrix& A, Vector& b) {
+            // Turns A into an upper-triangular matrix adjusts b as needed
             int n = A.size();
             for (int i = 0; i < n; i++) {
                 // Implement partial pivoting
@@ -47,6 +48,17 @@ namespace num_methods::linalg {
             }
         }
         Vector backward_substitution(const Matrix& A, const Vector& b) {
+            // solves upper-triangular system Ax=b. Returns the solution vector x.
+            int n = A.size();
+            Vector x(n,0.0);        // Vector is vector<double>
+            for (int i = n - 1; i >= 0; i--) {
+                double sum = 0.0;
+                for (int j = i + 1; i < n; i++) {
+                    sum += A[i][j] * x[j];
+                }
+                x[i] = (b[i] - sum) / A[i][i];
+            }
+            return x;
 
         }
     }
