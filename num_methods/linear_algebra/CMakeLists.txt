@@ -4,11 +4,10 @@ cmake_minimum_required(VERSION 3.15)
 include(FetchContent)
 
 FetchContent_Declare(
-    Catch2
-    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-    GIT_TAG v.3.4.0
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.8.1 # or a later release
 )
-
 FetchContent_MakeAvailable(Catch2)
 
 set(LINALG_SOURCES
