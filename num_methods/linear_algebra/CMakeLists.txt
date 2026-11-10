@@ -28,7 +28,7 @@ add_executable(linalg_tests
 target_link_libraries(linalg_tests
     PRIVATE
         num_methods_linalg
-        Catch2::CatchWithMain
+        Catch2::Catch2WithMain
 )
 
 add_test(NAME LinAlgMatrixTests COMMAND linalg_tests)

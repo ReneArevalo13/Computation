@@ -53,7 +53,7 @@ namespace num_methods::linalg {
             Vector x(n,0.0);        // Vector is vector<double>
             for (int i = n - 1; i >= 0; i--) {
                 double sum = 0.0;
-                for (int j = i + 1; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
                     sum += A[i][j] * x[j];
                 }
                 x[i] = (b[i] - sum) / A[i][i];
@@ -79,4 +79,4 @@ namespace num_methods::linalg {
         forward_elimination(A,b);
         return backward_substitution(A,b);
     }
-
+}
