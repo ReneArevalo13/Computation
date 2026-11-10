@@ -22,7 +22,7 @@ target_include_directories(num_methods_linalg
 )
 
 add_executable(linalg_tests
-    tests/test_guassian_elimination.cpp
+    tests/test_gaussian_elimination.cpp
 )
 
 target_link_libraries(linalg_tests
