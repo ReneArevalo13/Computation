@@ -68,7 +68,7 @@ namespace num_methods::linalg {
         int n = A.size();
         // safety check of vector and matrix sizes.
         // Cast n to a size_t for proper comparison
-        if (n==0 || b.size() != static_cast<size_t>(n)) {
+        if (n==0 || b.size() != static_cast<size_t>(n) || b.size() != static_cast<size_t>(A[0].size())) {
             throw std::invalid_argument("Matrix dimensions do not match vector dimensions");
         }
         // Solving Routine: forward_elimination -> backward_substitution
