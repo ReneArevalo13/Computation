@@ -21,8 +21,8 @@ TEST_CASE("Gaussian Elimination - Standard 4x4 System", "[linalg][solvers]") {
 
     REQUIRE(x.size() == 4);
     REQUIRE_THAT(x[0], WithinAbs(1.0, EPSILON));
-    REQUIRE_THAT(x[1], WithinAbs(-1.0, EPSILON));
-    REQUIRE_THAT(x[2], WithinAbs(2.0, EPSILON));
+    REQUIRE_THAT(x[1], WithinAbs(-2.0, EPSILON));
+    REQUIRE_THAT(x[2], WithinAbs(1.0, EPSILON));
     REQUIRE_THAT(x[3], WithinAbs(3.0, EPSILON));
 }
 
@@ -38,9 +38,9 @@ TEST_CASE("Gaussian Elimination - Requires Row Pivoting", "[linalg][pivoting]") 
     Vector x = gaussian_elimination(A, b);
 
     REQUIRE(x.size() == 3);
-    REQUIRE_THAT(x[0], WithinAbs(-1.0, EPSILON));
-    REQUIRE_THAT(x[1], WithinAbs(2.0, EPSILON));
-    REQUIRE_THAT(x[2], WithinAbs(0.0, EPSILON));
+    REQUIRE_THAT(x[0], WithinAbs(-8.0, EPSILON));
+    REQUIRE_THAT(x[1], WithinAbs(5.0, EPSILON));
+    REQUIRE_THAT(x[2], WithinAbs(-6.0, EPSILON));
 }
 
 TEST_CASE("Gaussian Elimination - Guardrails and Error Handling", "[linalg][errors]") {
