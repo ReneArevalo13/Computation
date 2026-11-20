@@ -6,8 +6,8 @@
 // Will try a flat structure later to see if how much faster that will be 
 //
 
-#include <linalg.hpp>
-#include <linalg_internal.hpp>
+#include "linalg.hpp"
+#include "linalg_internal.hpp"
 #include <stdexcept>
 #include <cmath>
 #include <algorithm>
