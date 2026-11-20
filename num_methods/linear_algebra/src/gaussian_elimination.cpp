@@ -7,6 +7,7 @@
 //
 
 #include <linalg.hpp>
+#include <linalg_internal.hpp>
 #include <stdexcept>
 #include <cmath>
 #include <algorithm>
@@ -14,9 +15,8 @@
 
 namespace num_methods::linalg {
     namespace {
-        void forward_elimination(Matrix& A, Vector& b) {
+        void forward_elimination(Matrix& A, Vector& b, int n) {
             // Turns A into an upper-triangular matrix adjusts b as needed
-            int n = A.size();
             for (int i = 0; i < n; i++) {
                 // Implement partial pivoting
                 int pivot_row = i;
@@ -47,9 +47,8 @@ namespace num_methods::linalg {
                 }
             }
         }
-        Vector backward_substitution(const Matrix& A, const Vector& b) {
+        Vector backward_substitution(const Matrix& A, const Vector& b, int n) {
             // solves upper-triangular system Ax=b. Returns the solution vector x.
-            int n = A.size();
             Vector x(n,0.0);        // Vector is vector<double>
             for (int i = n - 1; i >= 0; i--) {
                 double sum = 0.0;
@@ -65,7 +64,7 @@ namespace num_methods::linalg {
     // Note that in the client facing function call here we are passing by value.
     // This way we create a copy that can be worked on locally by the above helper functions.
     Vector gaussian_elimination(Matrix A, Vector b) {
-        int n = A.size();
+        int n = detail::validate_square_matrix(A);
         // safety check of vector and matrix sizes.
         // Cast n to a size_t for proper comparison
         if (n==0 || b.size() != static_cast<size_t>(n) || b.size() != static_cast<size_t>(A[0].size())) {
@@ -76,7 +75,7 @@ namespace num_methods::linalg {
         // Instead of copying the numbers, the compiler performs a pointer handoff:
         // it simply transfers ownership of the memory address containing your solution 
         // vector directly to the variable in main.cpp. It runs in O(1) constant time.
-        forward_elimination(A,b);
-        return backward_substitution(A,b);
+        forward_elimination(A, b, n);
+        return backward_substitution(A, b, n);
     }
 }
